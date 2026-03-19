@@ -19,25 +19,24 @@ else
     exit 1
 fi
 
-# 1. Install Go and Yarn via Package Manager
-echo "Installing Yarn..."
-$INSTALL_CMD yarn
+# 1. Install pnpm via Package Manager
+echo "Installing pnpm..."
+$INSTALL_CMD pnpm
 
-# 2. Install uv (Official Script)
+# 2. Install bun
+$INSTALL_CMD oven-sh/bun/bun
+
+# 3. Install uv 
 echo "Installing uv..."
-curl -LsSf https://astral.sh/uv/install.sh | sh
+$INSTALL_CMD uv
 
-# 3. Install nvm (Official Script)
+# 4. Install nvm (Official Script)
 echo "Installing nvm..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
 # Load nvm for the remainder of this script session
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# 4. Install Node.js LTS via nvm
-echo "Installing Node.js LTS..."
-nvm install --lts
 
 echo "------------------------------------------------"
 echo "Setup complete! Please restart your terminal."
